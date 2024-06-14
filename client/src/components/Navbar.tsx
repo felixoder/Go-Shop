@@ -1,7 +1,6 @@
 import  { useState } from 'react'; // Import useState for managing state
 import { Link } from 'react-router-dom'; // Correct import for Link from react-router-dom
 import MaxWidthWrapper from './MaxWidthWrapper';
-import { ArrowRight } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { signOutSuccess } from '../redux/user/userSlice';

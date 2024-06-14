@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
 
 type Product = {
   _id: string;
@@ -15,7 +13,6 @@ const Main = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<null | string>(null);
-  const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   useEffect(() => {
     fetch('https://go-shop-fbgh.onrender.com/api/get-prod') // Adjust the API endpoint if necessary

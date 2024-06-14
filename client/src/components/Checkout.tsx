@@ -1,7 +1,6 @@
 import  { useEffect, useState } from 'react';
 import {  useParams } from 'react-router-dom';
 import axios from 'axios';
-import { loadStripe } from '@stripe/stripe-js';
 import {Loader} from 'lucide-react'; // Assume there's a Loader component
 import MaxWidthWrapper from './MaxWidthWrapper';
 
