@@ -19,21 +19,21 @@ const App = () => {
     <>
      <Navbar/>
   <Routes>
-    <Route path='/' element={<Main/>}/>
-    <Route path='/register' element={<Register/>}/>
-    <Route path='/login' element={<Login/>}/>
+    <Route path='https://go-shop-mk17.vercel.app' element={<Main/>}/>
+    <Route path='https://go-shop-mk17.vercel.app/register' element={<Register/>}/>
+    <Route path='https://go-shop-mk17.vercel.app/login' element={<Login/>}/>
     <Route element={<AdminPrivateRoute/>}>
-      <Route path='/orders' element={<Orders/>}/>
+      <Route path='https://go-shop-mk17.vercel.app/orders' element={<Orders/>}/>
 
-    <Route path='/admin-dash' element={<AdminDash/>}/>
+    <Route path='https://go-shop-mk17.vercel.app/admin-dash' element={<AdminDash/>}/>
     </Route>
     <Route element={<PrivateRoute/>}>
-    <Route path='/success/:productId' element={<Success/>}/>
-    <Route path="/failure" element={<Failure/>}/>
-    <Route path="/order/:productId" element={<Checkout/>}/>
-    <Route path="/confirm/:productId" element={<Confirmation/>}/>
+    <Route path='https://go-shop-mk17.vercel.app/success/:productId' element={<Success/>}/>
+    <Route path="https://go-shop-mk17.vercel.app/failure" element={<Failure/>}/>
+    <Route path="https://go-shop-mk17.vercel.app/order/:productId" element={<Checkout/>}/>
+    <Route path="https://go-shop-mk17.vercel.app/confirm/:productId" element={<Confirmation/>}/>
 
-    <Route path='/products/:productId' element={<Products/>}/>
+    <Route path='https://go-shop-mk17.vercel.app/products/:productId' element={<Products/>}/>
     </Route>
 
     
