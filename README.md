@@ -32,6 +32,8 @@ To get started with this project, run
   git clone https://github.com/felixoder/Go-Shop.git
 ```
 get your own mongodb db to proceed  & and that's all you need to get started!
+Change the each link in the fetch api I had made the fetch api of the backend of my render delete it and leave it alone or add your prod link
+Same in the frontend
 
 
 
