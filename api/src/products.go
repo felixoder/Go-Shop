@@ -163,8 +163,8 @@ func handleCreateCheckoutSession(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 		Mode:       stripe.String(string(stripe.CheckoutSessionModePayment)),
-		SuccessURL: stripe.String("http://localhost:5173/success/" + prod.ID.Hex()), // Dynamic success URL
-		CancelURL:  stripe.String("http://localhost:5173/failure"),
+		SuccessURL: stripe.String("https://go-shop-mk17.vercel.app/success/" + prod.ID.Hex()), // Dynamic success URL
+		CancelURL:  stripe.String("https://go-shop-mk17.vercel.app/failure"),
 	}
 
 	// Create Stripe checkout session
