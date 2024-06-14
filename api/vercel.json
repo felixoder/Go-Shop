@@ -1,3 +1,16 @@
-{"routes":[
-    {"src":"/(.*)","dest":"/src"}
-]}
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/main.go",
+        "use": "@vercel/go"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "src/main.go"
+      }
+    ]
+  }
+  
