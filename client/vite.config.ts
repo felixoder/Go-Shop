@@ -5,7 +5,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://go-shop-fbgh.onrender.com',
         secure: false,      
       },
     },

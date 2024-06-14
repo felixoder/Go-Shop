@@ -18,7 +18,7 @@ const Main = () => {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
   useEffect(() => {
-    fetch('/api/get-prod') // Adjust the API endpoint if necessary
+    fetch('https://go-shop-fbgh.onrender.com/api/get-prod') // Adjust the API endpoint if necessary
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

@@ -25,7 +25,7 @@ const Register: React.FC = () => {
     }
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/sign-up', {
+      const res = await fetch('https://go-shop-fbgh.onrender.com/api/sign-up', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -36,7 +36,7 @@ const Register: React.FC = () => {
       }
       if (res.ok) {
         dispatch(signInSuccess(data));
-        navigate('/admin-dash');
+        navigate('/sign-in');
       }
     } catch (error) {
       dispatch(signInFailure(error));
@@ -80,7 +80,7 @@ const Register: React.FC = () => {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign In
+              Sign Up
             </button>
           </div>
         </form>

@@ -25,7 +25,7 @@ const Login: React.FC = () => {
     }
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/sign-in', {
+      const res = await fetch('https://go-shop-fbgh.onrender.com/api/sign-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

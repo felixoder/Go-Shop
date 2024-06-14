@@ -20,7 +20,7 @@ const Products: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`/api/get-prod/${productId}`);
+        const res = await axios.get(`https://go-shop-fbgh.onrender.com/api/get-prod/${productId}`);
         if (res.status === 200) {
           setProduct(res.data);
         } else {
@@ -55,7 +55,7 @@ const Products: React.FC = () => {
   }
   const handleCheckout = async () => {
     try {
-      const response = await axios.post(`http://localhost:8000/api/create-checkout-session/${productId}`);
+      const response = await axios.post(`https://go-shop-fbgh.onrender.com/api/create-checkout-session/${productId}`);
       const sessionId = response.data.id;
 
       // Initialize Stripe

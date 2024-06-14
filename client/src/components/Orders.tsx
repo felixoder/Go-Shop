@@ -20,7 +20,7 @@ const Orders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('/api/get-cus'); // Replace with your actual API endpoint
+        const response = await axios.get('https://go-shop-fbgh.onrender.com/api/get-cus'); // Replace with your actual API endpoint
         console.log('Response:', response.data); // Check the response data in console
         setOrders(response.data);
       } catch (error) {

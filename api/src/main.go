@@ -34,19 +34,19 @@ func main() {
     api := r.PathPrefix("/api").Subrouter()
 
     // Define your API endpoints
-    api.HandleFunc("/sign-up", signUp).Methods("POST")
-    api.HandleFunc("/sign-in", signIn).Methods("POST")
-    api.HandleFunc("/sign-out", signOut).Methods("POST")
-    api.HandleFunc("/create-prod", createProducts).Methods("POST")
-    api.HandleFunc("/get-prod", getProducts).Methods("GET")
-    api.HandleFunc("/get-prod/{id}", getProductByID).Methods("GET")
+    api.HandleFunc("/sign-up", signUp).Methods("POST","OPTIONS")
+    api.HandleFunc("/sign-in", signIn).Methods("POST","OPTIONS")
+    api.HandleFunc("/sign-out", signOut).Methods("POST","OPTIONS")
+    api.HandleFunc("/create-prod", createProducts).Methods("POST","OPTIONS")
+    api.HandleFunc("/get-prod", getProducts).Methods("GET","OPTIONS")
+    api.HandleFunc("/get-prod/{id}", getProductByID).Methods("GET","OPTIONS")
     // api.HandleFunc("/update-paid/{id}", updatePaid).Methods("PUT")
 
 
     // Ensure the correct path for create-checkout-session
-    api.HandleFunc("/create-checkout-session/{id}", handleCreateCheckoutSession).Methods("POST")
-    api.HandleFunc("/create-cus",AddCustomer).Methods("POST")
-    api.HandleFunc("/get-cus", GetCustomers).Methods("GET")
+    api.HandleFunc("/create-checkout-session/{id}", handleCreateCheckoutSession).Methods("POST","OPTIONS")
+    api.HandleFunc("/create-cus",AddCustomer).Methods("POST","OPTIONS")
+    api.HandleFunc("/get-cus", GetCustomers).Methods("GET","OPTIONS")
 
     // Start the server
     port := ":8000"

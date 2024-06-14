@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const handleSignOut = async ()=>{
     try {
-      const res = await fetch('/api/sign-out',{
+      const res = await fetch('https://go-shop-fbgh.onrender.com/api/sign-out',{
         method:'POST'
   
       })
