@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 import MaxWidthWrapper from '../components/MaxWidthWrapper';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 interface FormData {
@@ -82,7 +82,7 @@ const Login: React.FC = () => {
             >
               Sign In
             </button>
-            <a href="/register">Sign up</a>
+            <Link to="/register">Sign up</Link>
           </div>
         </form>
       </div>
