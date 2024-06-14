@@ -44,10 +44,9 @@ const Main = () => {
 
   return (
     <>
-    <div className="">
-      <img src="/pic.webp" alt="" className="w-full h-[500px] object-cover mb-5"/>
-      
-    </div>
+   <div className="">
+  <img src="/pic.webp" alt="" className="w-full h-[300px] object-cover mb-5 lg:h-[500px]" />
+</div>
     
 
     <MaxWidthWrapper>
