@@ -14,17 +14,16 @@ interface FormData {
   productid: string;
 }
 
-type Product = {
-  _id: string;
-  product: string;
-  description: string;
-  image: string;
-  price: string; // Price as string
-};
-
 const Success = () => {
-  const [formData, setFormData] = useState<FormData>({ fname: '', phno: '', address: '', pin: '', city: '', landmark: '', productid: '' });
-  const [product, setProduct] = useState<Product | null>(null);
+  const [formData, setFormData] = useState<FormData>({
+    fname: '',
+    phno: '',
+    address: '',
+    pin: '',
+    city: '',
+    landmark: '',
+    productid: '',
+  });
   const navigate = useNavigate();
   const { productId } = useParams<{ productId: string }>();
 
@@ -38,7 +37,7 @@ const Success = () => {
       try {
         const res = await axios.get(`https://go-shop-fbgh.onrender.com/api/get-prod/${productId}`);
         if (res.status === 200) {
-          setProduct(res.data);
+          // Optionally set product details in state, though it's not used in the form
         } else {
           throw new Error('Failed to fetch product');
         }
@@ -57,25 +56,21 @@ const Success = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (!formData.fname || !formData.phno || !formData.address || !formData.pin || !formData.city || !formData.landmark) {
-      toast.error("All fields are required");
+      toast.error('All fields are required');
       return;
     }
 
     try {
-      const res = await fetch('https://go-shop-fbgh.onrender.com/api/create-cus', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
+      const res = await axios.post('https://go-shop-fbgh.onrender.com/api/create-cus', formData);
+      const data = res.data;
       if (data.success === false) {
-        toast.error("Failed to submit form");
+        toast.error('Failed to submit form');
       } else {
-        toast.success("Form submitted successfully");
+        toast.success('Form submitted successfully');
         navigate(`/order/${productId}`);
       }
     } catch (error) {
-      toast.error("Failed to submit form");
+      toast.error('Failed to submit form');
     }
   };
 
@@ -96,6 +91,7 @@ const Success = () => {
               onChange={handleChange}
             />
           </div>
+          
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Product Id</label>
             <input
@@ -106,6 +102,7 @@ const Success = () => {
               readOnly // Make the input read-only
             />
           </div>
+          
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
             <input

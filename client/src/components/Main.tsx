@@ -33,7 +33,7 @@ const Main = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...It will load because of the free tier of render</div>;
   }
 
   if (error) {

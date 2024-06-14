@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, Stripe } from '@stripe/stripe-js'; // Import Stripe type
+
 type Product = {
   _id: string;
   product: string;
@@ -16,6 +17,7 @@ const Products: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [stripe, setStripe] = useState<Stripe | null>(null); // Declare stripe state
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -36,7 +38,37 @@ const Products: React.FC = () => {
     fetchProduct();
   }, [productId]);
 
- 
+  useEffect(() => {
+    const loadStripeAndSetState = async () => {
+      const stripeLoaded = await loadStripe('pk_test_51PRK9Z2Mr9crS3hzDmyQoEQnuUWO555sYUSGdEpxu3pAhGjxYSaNWjujgzWe3ub8T3FiCF5u5CHztwyh92qk51R200PsvewTyF');
+      setStripe(stripeLoaded);
+    };
+
+    loadStripeAndSetState();
+  }, []); // Run once on component mount
+
+  const handleCheckout = async () => {
+    if (!stripe) {
+      console.error('Stripe has not been initialized');
+      return;
+    }
+
+    try {
+      const response = await axios.post(`https://go-shop-fbgh.onrender.com/api/create-checkout-session/${productId}`);
+      const sessionId = response.data.id;
+
+      // Redirect to Stripe Checkout page
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: sessionId,
+      });
+
+      if (error) {
+        console.error("Error:", error);
+      }
+    } catch (error) {
+      console.error("Failed to create checkout session:", error);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -53,27 +85,6 @@ const Products: React.FC = () => {
       </div>
     );
   }
-  const handleCheckout = async () => {
-    try {
-      const response = await axios.post(`https://go-shop-fbgh.onrender.com/api/create-checkout-session/${productId}`);
-      const sessionId = response.data.id;
-
-      // Initialize Stripe
-      const stripe = await loadStripe('pk_test_51PRK9Z2Mr9crS3hzDmyQoEQnuUWO555sYUSGdEpxu3pAhGjxYSaNWjujgzWe3ub8T3FiCF5u5CHztwyh92qk51R200PsvewTyF'); // Replace with your actual publishable key
-
-      // Redirect to Stripe Checkout page
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: sessionId,
-      });
-
-      if (error) {
-        console.error("Error:", error);
-      }
-    } catch (error) {
-      console.error("Failed to create checkout session:", error);
-    }
-  };
-
 
   return (
     <div className="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
