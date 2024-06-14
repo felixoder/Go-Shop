@@ -4,6 +4,7 @@ import (
     "log"
     "net/http"
     "github.com/gorilla/mux"
+    "github.com/tbxark/g4vercel"
 )
 
 // Middleware to enable CORS
