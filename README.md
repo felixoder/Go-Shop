@@ -4,6 +4,11 @@ Built with the Go Lang TypeScript React
 
 ![Project Image](https://github.com/felixoder/Go-Shop/blob/master/client/public/golang.svg)
 
+## Demo Video
+
+[![Demo Video](https://github.com/felixoder/Go-Shop/blob/master/client/public/demo.png)](https://github.com/felixoder/Go-Shop/blob/master/client/public/demo.mp4)
+
+
 ## Features
 
 - 🛠️ Full stack Ecom with GO Lang
