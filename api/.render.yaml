@@ -3,7 +3,7 @@ services:
     name: go-shop
     env: go
     build:
-      version: 1.22.4
+      version: 1.22.3
       commands:
         - cd src
         - go build -o main
