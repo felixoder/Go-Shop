@@ -6,7 +6,7 @@ Built with the Go Lang TypeScript React
 
 ## Demo Video
 
-[![Demo Video](https://github.com/felixoder/Go-Shop/blob/master/client/public/demo.png)](https://github.com/felixoder/Go-Shop/blob/master/client/public/demo.mp4)
+[![Demo Video](https://github.com/felixoder/Go-Shop/blob/master/client/public/demo.png)](https://youtu.be/tVLKULGu4hA)
 
 
 ## Features
