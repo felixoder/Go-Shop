@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: go-shop
+    env: go
+    build:
+      version: 1.22.4
+      commands:
+        - cd src
+        - go build -o main
+    plan: free
+    autoDeploy: true
+    startCommand: ./src/main
