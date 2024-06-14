@@ -36,7 +36,7 @@ const Register: React.FC = () => {
       }
       if (res.ok) {
         dispatch(signInSuccess(data));
-        navigate('/sign-in');
+        navigate('/login');
       }
     } catch (error) {
       dispatch(signInFailure(error));

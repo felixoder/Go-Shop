@@ -62,7 +62,7 @@ const Success = () => {
     }
 
     try {
-      const res = await fetch('/api/create-cus', {
+      const res = await fetch('https://go-shop-fbgh.onrender.com/api/create-cus', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
