@@ -6,7 +6,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://go-shop-fbgh.onrender.com',
-        secure: false,      
+        secure: true,      
       },
     },
   },
