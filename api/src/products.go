@@ -163,8 +163,8 @@ func handleCreateCheckoutSession(w http.ResponseWriter, r *http.Request) {
 			},
 		},
 		Mode:       stripe.String(string(stripe.CheckoutSessionModePayment)),
-		SuccessURL: stripe.String("https://go-shop-3.onrender.com/success/" + prod.ID.Hex()), // Dynamic success URL
-		CancelURL:  stripe.String("https://go-shop-3.onrender.com/failure"),
+		SuccessURL: stripe.String("go-shop-3.onrender.com/success/" + prod.ID.Hex()), // Dynamic success URL
+		CancelURL:  stripe.String("go-shop-3.onrender.com/failure"),
 	}
 
 	// Create Stripe checkout session
