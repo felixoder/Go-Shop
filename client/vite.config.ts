@@ -6,9 +6,17 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'https://go-shop-fbgh.onrender.com',
-        secure: true,      
+        secure: false,
+      },
+    },
+    historyApiFallback: true, // Add this line to handle SPA routing
+  },
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
       },
     },
   },
-  plugins: [react()],
 });
