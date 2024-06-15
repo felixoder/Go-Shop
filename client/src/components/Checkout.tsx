@@ -58,6 +58,7 @@ const Checkout = () => {
     <MaxWidthWrapper>
  <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-3xl font-bold mb-4">Your Order is Successful</h1>
+      <p className='mb-4 mt-2 text-bold text-red-800 capitalize underline'>{product.product}</p>
       <p className="mb-4">{product.description}</p>
       <img src={product.image} alt={product.product} className="mb-4 h-[300px] w-[500px] object-cover" />
       <p className="mb-4 text-xl font-semibold">{product.price} INR</p>
