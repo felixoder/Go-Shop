@@ -3,7 +3,7 @@ import MaxWidthWrapper from '../components/MaxWidthWrapper';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import toast,{ Toaster } from 'react-hot-toast';
 interface FormData {
   email: string;
   password: string;
@@ -32,13 +32,16 @@ const Register: React.FC = () => {
       });
       const data = await res.json();
       if (data.success === false) {
+        toast.error("Sorry try Again..")
         dispatch(signInFailure(data.message));
       }
       if (res.ok) {
         dispatch(signInSuccess(data));
+        toast.success("You are logged in")
         navigate('/login');
       }
     } catch (error) {
+      toast.error("Sorry try Again..")
       dispatch(signInFailure(error));
     }
   };
@@ -46,6 +49,7 @@ const Register: React.FC = () => {
 
   return (
     <MaxWidthWrapper className="flex mx-auto">
+      <Toaster/>
       <div className="w-full max-w-md mx-auto mt-10 mb-10">
         <h1 className="text-center font-bold text-xl">Register</h1>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>

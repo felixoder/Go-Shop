@@ -3,6 +3,7 @@ import MaxWidthWrapper from '../components/MaxWidthWrapper';
 import { signInFailure, signInStart, signInSuccess } from '../redux/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import toast,{Toaster} from 'react-hot-toast'
 
 interface FormData {
   email: string;
@@ -21,6 +22,7 @@ const Login: React.FC = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
+      toast.error("Sorry Try Again")
       return dispatch(signInFailure('Please fill the all fields'));
     }
     try {
@@ -32,13 +34,16 @@ const Login: React.FC = () => {
       });
       const data = await res.json();
       if (data.success === false) {
+        toast.error("Sorry Try Again")
         dispatch(signInFailure(data.message));
       }
       if (res.ok) {
+        toast.success("Logging You in")
         dispatch(signInSuccess(data));
         navigate('/');
       }
     } catch (error) {
+      toast.error("Sorry Try Again")
       dispatch(signInFailure(error));
     }
   };
@@ -46,6 +51,7 @@ const Login: React.FC = () => {
 
   return (
     <MaxWidthWrapper className="flex mx-auto">
+      <Toaster/>
       <div className="w-full max-w-md mx-auto mt-10 mb-10">
         <h1 className="text-center font-bold text-xl">Login</h1>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
