@@ -38,7 +38,7 @@ const AddModal: React.FC<ModalProps> = ({ show, onConfirm, onClose }) => {
         toast.error("Failed")
       }
       try {
-        const res = await fetch('/api/create-prod', {
+        const res = await fetch('https://go-shop-fbgh.onrender.com/api/create-prod', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
